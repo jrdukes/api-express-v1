@@ -10,6 +10,15 @@ app.get('/', (req, res) => {
   res.status(200).send('Welcome to all the cats. Meow.')
 })
 
+app.get('/cats', (req,res) => {
+  console.log(JSON.stringify(req, nul, 2))
+
+  const foundCats = catsDatabase.filter(item => item.type === 'cat')
+  res.status(200).send(foundCats)
+
+
+})
+
 app.listen(
   process.env.PORT || 5555,
   process.env.HOST || '127.0.0.1',
